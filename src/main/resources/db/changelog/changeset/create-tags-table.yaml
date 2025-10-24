@@ -1,0 +1,68 @@
+databaseChangeLog:
+  - changeSet:
+      id: create-tags
+      author: Mari
+      changes:
+        - insert:
+            tableName: tag
+            columns:
+              - column:
+                  name: id
+                  valueNumeric: 1
+              - column:
+                  name: name
+                  value: "кулаки"
+        - insert:
+            tableName: tag
+            columns:
+              - column:
+                  name: id
+                  valueNumeric: 2
+              - column:
+                  name: name
+                  value: "ладони"
+        - insert:
+            tableName: tag
+            columns:
+              - column:
+                  name: id
+                  valueNumeric: 3
+              - column:
+                  name: name
+                  value: "нейтрально"
+        - insert:
+            tableName: tag
+            columns:
+              - column:
+                  name: id
+                  valueNumeric: 4
+              - column:
+                  name: name
+                  value: "поворот"
+        - insert:
+            tableName: tag
+            columns:
+              - column:
+                  name: id
+                  valueNumeric: 5
+              - column:
+                  name: name
+                  value: "smooth"
+        - insert:
+            tableName: tag
+            columns:
+              - column:
+                  name: id
+                  valueNumeric: 6
+              - column:
+                  name: name
+                  value: "гармошка"
+        - insert:
+            tableName: tag
+            columns:
+              - column:
+                  name: id
+                  valueNumeric: 7
+              - column:
+                  name: name
+                  value: "кокетливость"

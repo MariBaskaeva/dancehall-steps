@@ -15,7 +15,7 @@ public class StepService {
 
     public StepsDTO receiveSteps() {
         List<Step> steps = repository.findAll();
-        Long count = repository.count();
+        Integer count = steps.size();
         return new StepsDTO(count, steps);
     }
 }

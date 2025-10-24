@@ -11,6 +11,6 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 public class StepsDTO {
-    Long totalCount;
+    Integer totalCount;
     List<Step> steps;
 }
