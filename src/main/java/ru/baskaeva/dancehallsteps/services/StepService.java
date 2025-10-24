@@ -1,21 +1,21 @@
 package ru.baskaeva.dancehallsteps.services;
 
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
-import ru.baskaeva.dancehallsteps.DTO.StepsDTO;
 import ru.baskaeva.dancehallsteps.model.Step;
 import ru.baskaeva.dancehallsteps.repository.StepRepository;
-
-import java.util.List;
 
 @Service
 @RequiredArgsConstructor
 public class StepService {
+    private static final int SIZE = 10;
     private final StepRepository repository;
 
-    public StepsDTO receiveSteps() {
-        List<Step> steps = repository.findAll();
-        Integer count = steps.size();
-        return new StepsDTO(count, steps);
+    public Page<Step> receiveSteps(int page) {
+        Pageable pageable = PageRequest.of(page, SIZE);
+        return repository.findAll(pageable);
     }
 }
