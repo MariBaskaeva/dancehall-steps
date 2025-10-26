@@ -7,4 +7,7 @@ spring:
     url: ${DB_URL}
   jpa:
     hibernate:
-      ddl-auto: create-drop
+      ddl-auto: none
+  liquibase:
+    change-log: classpath:db/changelog/db.changelog-master.yaml
+    enabled: true

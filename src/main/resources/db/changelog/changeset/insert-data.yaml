@@ -1,0 +1,136 @@
+databaseChangeLog:
+  - changeSet:
+      id: insert-data
+      author: Mari
+      changes:
+        - insert:
+            tableName: step
+            columns:
+              - column:
+                  name: id
+                  valueNumeric: 1
+              - column:
+                  name: name
+                  value: "Back&Forth"
+              - column:
+                  name: author
+                  value: "Dancing Rebel"
+              - column:
+                  name: era
+                  value: "EARLY_NEW"
+        - insert:
+            tableName: step
+            columns:
+              - column:
+                  name: id
+                  valueNumeric: 2
+              - column:
+                  name: name
+                  value: "Swiss"
+              - column:
+                  name: author
+                  value: "Dancing Rebel"
+              - column:
+                  name: era
+                  value: "EARLY_NEW"
+        - insert:
+            tableName: step
+            columns:
+              - column:
+                  name: id
+                  valueNumeric: 3
+              - column:
+                  name: name
+                  value: "Non stop"
+              - column:
+                  name: author
+                  value: "Dancing Rebel"
+              - column:
+                  name: era
+                  value: "EARLY_NEW"
+
+  - changeSet:
+      id: insert-tags
+      author: Mari
+      changes:
+        - insert:
+            tableName: step_tags
+            columns:
+              - column:
+                  name: step_id
+                  valueNumeric: 1
+              - column:
+                  name: tag_id
+                  valueNumeric: 1
+        - insert:
+            tableName: step_tags
+            columns:
+              - column:
+                  name: step_id
+                  valueNumeric: 1
+              - column:
+                  name: tag_id
+                  valueNumeric: 2
+        - insert:
+            tableName: step_tags
+            columns:
+              - column:
+                  name: step_id
+                  valueNumeric: 1
+              - column:
+                  name: tag_id
+                  valueNumeric: 3
+        - insert:
+            tableName: step_tags
+            columns:
+              - column:
+                  name: step_id
+                  valueNumeric: 1
+              - column:
+                  name: tag_id
+                  valueNumeric: 4
+        - insert:
+            tableName: step_tags
+            columns:
+              - column:
+                  name: step_id
+                  valueNumeric: 2
+              - column:
+                  name: tag_id
+                  valueNumeric: 5
+        - insert:
+            tableName: step_tags
+            columns:
+              - column:
+                  name: step_id
+                  valueNumeric: 2
+              - column:
+                  name: tag_id
+                  valueNumeric: 6
+        - insert:
+            tableName: step_tags
+            columns:
+              - column:
+                  name: step_id
+                  valueNumeric: 2
+              - column:
+                  name: tag_id
+                  valueNumeric: 7
+        - insert:
+            tableName: step_tags
+            columns:
+              - column:
+                  name: step_id
+                  valueNumeric: 2
+              - column:
+                  name: tag_id
+                  valueNumeric: 1
+        - insert:
+            tableName: step_tags
+            columns:
+              - column:
+                  name: step_id
+                  valueNumeric: 2
+              - column:
+                  name: tag_id
+                  valueNumeric: 2
