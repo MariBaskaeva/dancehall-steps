@@ -1,0 +1,11 @@
+databaseChangeLog:
+    - changeSet:
+        id: create-sequence
+        author: Mari
+        changes:
+            createSequence:
+                sequenceName: "my_sequence"
+                startValue: "1000"
+                incrementBy: "1"
+                minValue: "1"
+                maxValue: "9999999"

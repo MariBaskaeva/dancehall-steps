@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import ru.baskaeva.dancehallsteps.model.Era;
 import ru.baskaeva.dancehallsteps.model.Step;
-import ru.baskaeva.dancehallsteps.model.Tag;
 import ru.baskaeva.dancehallsteps.model.Type;
 import ru.baskaeva.dancehallsteps.services.StepService;
 
