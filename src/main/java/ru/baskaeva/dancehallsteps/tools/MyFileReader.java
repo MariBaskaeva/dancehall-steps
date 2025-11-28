@@ -1,22 +1,20 @@
 package ru.baskaeva.dancehallsteps.tools;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
 import java.io.IOException;
+import java.net.URISyntaxException;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 
 public class MyFileReader {
-    public static String readFile(String path) {
-        StringBuilder read = new StringBuilder();
+    public static String readFile(String name) {
         try {
-            BufferedReader br = new BufferedReader(new FileReader(path));
-            String line;
-            while ((line = br.readLine()) != null) {
-                read.append(line);
-                read.append("\n");
-            }
-        } catch (IOException e) {
+            Path path = Paths.get(MyFileReader.class.getClassLoader().getResource(name).toURI());
+            return Files.readString(path, StandardCharsets.UTF_8);
+        } catch (URISyntaxException | IOException e) {
             e.printStackTrace();
         }
-        return read.toString();
+        return "";
     }
 }

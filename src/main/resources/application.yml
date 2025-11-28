@@ -13,4 +13,4 @@ spring:
     enabled: true
 bot:
   token: ${BOT_TOKEN}
-  name: "Dancehall steps"
+  name: ${BOT_NAME}
