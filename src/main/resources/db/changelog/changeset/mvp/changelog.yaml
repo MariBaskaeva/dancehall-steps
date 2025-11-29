@@ -1,0 +1,16 @@
+databaseChangeLog:
+    - include:
+        file: create-sequences.yaml
+        relativeToChangelogFile: true
+    - include:
+        file: create-tables.yaml
+        relativeToChangelogFile: true
+    - include:
+        file: insert-steps.sql
+        relativeToChangelogFile: true
+    - include:
+        file: insert-tags.sql
+        relativeToChangelogFile: true
+    - include:
+        file: insert-steps-tags.sql
+        relativeToChangelogFile: true

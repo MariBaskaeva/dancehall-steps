@@ -23,11 +23,11 @@ import java.util.List;
 public class Step {
     @Id
     @SequenceGenerator(
-            name = "create-sequence",
-            sequenceName = "my_sequence",
+            name = "step-sequence",
+            sequenceName = "step_sequence",
             allocationSize = 1
     )
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "create-sequence")
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "step-sequence")
     private Long id;
     private String name;
     @Enumerated(EnumType.STRING)

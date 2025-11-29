@@ -1,0 +1,40 @@
+--liquibase formatted sql
+
+--changeset basma:insert-tags
+insert into tag(id, name) values (nextval('step_sequence'), 'ладони');
+insert into tag(id, name) values (nextval('step_sequence'), 'кулаки');
+insert into tag(id, name) values (nextval('step_sequence'), 'за_партой');
+insert into tag(id, name) values (nextval('step_sequence'), 'молитва');
+insert into tag(id, name) values (nextval('step_sequence'), 'змейка');
+insert into tag(id, name) values (nextval('step_sequence'), 'на_грудь');
+insert into tag(id, name) values (nextval('step_sequence'), 'хлопки');
+insert into tag(id, name) values (nextval('step_sequence'), 'руки_в_стороны');
+insert into tag(id, name) values (nextval('step_sequence'), 'cock');
+insert into tag(id, name) values (nextval('step_sequence'), 'versatile');
+insert into tag(id, name) values (nextval('step_sequence'), 'молчи');
+insert into tag(id, name) values (nextval('step_sequence'), 'волны');
+insert into tag(id, name) values (nextval('step_sequence'), 'шлепок');
+insert into tag(id, name) values (nextval('step_sequence'), 'пулл');
+insert into tag(id, name) values (nextval('step_sequence'), 'нет');
+insert into tag(id, name) values (nextval('step_sequence'), 'кошачьи_лапки');
+insert into tag(id, name) values (nextval('step_sequence'), 'ойлинг');
+insert into tag(id, name) values (nextval('step_sequence'), 'тачинг');
+insert into tag(id, name) values (nextval('step_sequence'), 'поворот');
+insert into tag(id, name) values (nextval('step_sequence'), 'шаги');
+insert into tag(id, name) values (nextval('step_sequence'), 'подбивка');
+insert into tag(id, name) values (nextval('step_sequence'), 'перестановка_ног');
+insert into tag(id, name) values (nextval('step_sequence'), 'сидонг');
+insert into tag(id, name) values (nextval('step_sequence'), 'падебуре');
+insert into tag(id, name) values (nextval('step_sequence'), 'перепрыжка');
+insert into tag(id, name) values (nextval('step_sequence'), 'гармошка');
+insert into tag(id, name) values (nextval('step_sequence'), 'шейк');
+insert into tag(id, name) values (nextval('step_sequence'), 'juk');
+insert into tag(id, name) values (nextval('step_sequence'), 'резкость');
+insert into tag(id, name) values (nextval('step_sequence'), 'smooth');
+insert into tag(id, name) values (nextval('step_sequence'), 'кокетливость');
+insert into tag(id, name) values (nextval('step_sequence'), 'нейтрально');
+insert into tag(id, name) values (nextval('step_sequence'), 'агрессивность');
+insert into tag(id, name) values (nextval('step_sequence'), 'уверенность');
+insert into tag(id, name) values (nextval('step_sequence'), 'смена_уровней');
+insert into tag(id, name) values (nextval('step_sequence'), 'наклон');
+insert into tag(id, name) values (nextval('step_sequence'), 'dutty_wine');

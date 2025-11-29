@@ -54,11 +54,11 @@ public class Bot extends TelegramLongPollingBot {
         }
 
         if(start){
-            var path = "src/main/resources/static/start";
+            var path = "static/start";
             sendText(user.getId(), MyFileReader.readFile(path), true);
         }
         else {
-            Pageable pageable = PageRequest.of(0, 100, Sort.by("name").ascending());
+            Pageable pageable = PageRequest.of(0, 10, Sort.by("name").ascending());
             Page<Step> steps;
             MustacheFactory mf = new DefaultMustacheFactory();
             Mustache mustache = mf.compile("templates/step.mustache");
