@@ -1,0 +1,21 @@
+databaseChangeLog:
+    - changeSet:
+        id: create-sequence-step
+        author: Mari
+        changes:
+            createSequence:
+                sequenceName: "step_sequence"
+                startValue: "1"
+                incrementBy: "1"
+                minValue: "1"
+                maxValue: "9999999"
+    - changeSet:
+        id: create-sequence-tag
+        author: Mari
+        changes:
+            createSequence:
+                sequenceName: "tag_sequence"
+                startValue: "1"
+                incrementBy: "1"
+                minValue: "1"
+                maxValue: "9999999"
