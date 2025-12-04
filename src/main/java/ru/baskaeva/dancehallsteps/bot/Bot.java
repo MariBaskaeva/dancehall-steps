@@ -62,6 +62,7 @@ public class Bot extends TelegramLongPollingBot {
             }
 
             if (start) {
+                start = false;
                 var path = "static/start";
                 sendText(user.getId(), MyFileReader.readFile(path), true);
             } else {
