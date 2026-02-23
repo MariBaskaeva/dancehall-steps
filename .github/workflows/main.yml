@@ -22,5 +22,5 @@ jobs:
           git pull origin main
           mvn clean package
           podman-compose down
-          podman-compose --env-file ../app/env.sh up -d
+          podman-compose --env-file ../app/env.sh up --build -d
           EOF
