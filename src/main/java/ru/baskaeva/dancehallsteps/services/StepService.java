@@ -5,6 +5,8 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
+import ru.baskaeva.dancehallsteps.DTO.StepDTO;
+import ru.baskaeva.dancehallsteps.DTO.TagDTO;
 import ru.baskaeva.dancehallsteps.model.Era;
 import ru.baskaeva.dancehallsteps.model.Step;
 import ru.baskaeva.dancehallsteps.model.Tag;
@@ -37,5 +39,21 @@ public class StepService {
                 .and(StepSpecifications.hasTags(tags));
 
         return stepRepository.findAll(spec, pageable);
+    }
+
+    public Step createStep(StepDTO stepDTO) {
+        Step step = new Step();
+        var list = step.getTags();
+        for(TagDTO name: stepDTO.getTags()) {
+            var tag = new Tag();
+            tag.setName(name.getName());
+            list.add(tagRepository.save(tag));
+        }
+        step.setName(stepDTO.getName());
+        step.setAuthor(stepDTO.getAuthor());
+        step.setEra(stepDTO.getEra());
+        step.setType(stepDTO.getType());
+
+        return stepRepository.save(step);
     }
 }
