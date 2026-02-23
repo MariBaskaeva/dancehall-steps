@@ -1,4 +1,4 @@
-FROM openjdk:17-jdk-slim
+FROM eclipse-temurin:17-ubi9-minimal
 WORKDIR app
 COPY target/*.jar app.jar
 
