@@ -1,0 +1,17 @@
+spring:
+  application:
+    name: Dancehall-steps
+  datasource:
+    username: ${DB_USERNAME}
+    password: ${DB_PASSWORD}
+    url: ${DB_URL}
+  jpa:
+    hibernate:
+      ddl-auto: none
+  liquibase:
+    change-log: classpath:db/changelog/db.changelog-master.yaml
+    enabled: true
+bot:
+  token: ${BOT_TOKEN}
+  name: ${BOT_NAME}
+  greeting: classpath:static/start
