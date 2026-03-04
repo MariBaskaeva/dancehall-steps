@@ -13,6 +13,7 @@
     <modules>
         <module>telegram-bot</module>
         <module>steps-app</module>
+        <module>bot-annotations</module>
     </modules>
 
     <groupId>ru.baskaeva</groupId>

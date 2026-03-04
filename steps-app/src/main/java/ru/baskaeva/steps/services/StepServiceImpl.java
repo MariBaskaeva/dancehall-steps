@@ -19,7 +19,6 @@ public class StepServiceImpl implements StepService {
     @Override
     public Page<StepDTO> findAll(StepFilter filter,
                                  Pageable pageable) {
-
         return stepRepository.findAll(filter.toSpecification(), pageable)
                 .map(mapper::toStepDTO);
     }
