@@ -7,6 +7,7 @@ import org.telegram.telegrambots.meta.TelegramBotsApi;
 import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
 import org.telegram.telegrambots.meta.generics.LongPollingBot;
 import org.telegram.telegrambots.updatesreceivers.DefaultBotSession;
+import ru.baskaeva.steps.properties.AnalyticsProperties;
 import ru.baskaeva.steps.properties.BotProperties;
 
 @Configuration
@@ -15,6 +16,12 @@ public class ApplicationConfig {
     @ConfigurationProperties("bot")
     public BotProperties botProperties() {
         return new BotProperties();
+    }
+
+    @Bean
+    @ConfigurationProperties("analytics")
+    public AnalyticsProperties analyticsProperties() {
+        return new AnalyticsProperties();
     }
 
     @Bean

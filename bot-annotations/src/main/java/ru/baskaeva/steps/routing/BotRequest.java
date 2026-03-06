@@ -33,4 +33,9 @@ public record BotRequest(Update update) {
         if (hasCallback()) return update.getCallbackQuery().getMessage().getMessageId();
         return update.getMessage().getMessageId();
     }
+
+    public Long userId() {
+        if (hasCallback()) return update.getCallbackQuery().getFrom().getId();
+        return update.getMessage().getFrom().getId();
+    }
 }

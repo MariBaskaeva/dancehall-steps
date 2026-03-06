@@ -1,0 +1,63 @@
+databaseChangeLog:
+  - changeSet:
+      id: create-bot-event-table
+      author: Mari
+      changes:
+        - createTable:
+            tableName: bot_event
+            columns:
+              - column:
+                  name: id
+                  type: BIGINT
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: event_ts
+                  type: TIMESTAMPTZ
+                  constraints:
+                    nullable: false
+              - column:
+                  name: event_name
+                  type: VARCHAR(100)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: distinct_id
+                  type: VARCHAR(50)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: ui_version
+                  type: VARCHAR(20)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: props
+                  type: JSONB
+
+        - createIndex:
+            tableName: bot_event
+            indexName: idx_bot_event_ts
+            columns:
+              - column:
+                  name: event_ts
+
+        - createIndex:
+            tableName: bot_event
+            indexName: idx_bot_event_name_ts
+            columns:
+              - column:
+                  name: event_name
+              - column:
+                  name: event_ts
+
+        - createIndex:
+            tableName: bot_event
+            indexName: idx_bot_event_distinct_ts
+            columns:
+              - column:
+                  name: distinct_id
+              - column:
+                  name: event_ts

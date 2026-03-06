@@ -15,3 +15,13 @@ bot:
   token: ${BOT_TOKEN}
   name: ${BOT_NAME}
   greeting: classpath:static/start
+
+analytics:
+  ui-version: v1
+  providers:
+    db:
+      enabled: true
+    posthog:
+      enabled: true
+      api-key: ${POSTHOG_TOKEN}
+      host: https://eu.i.posthog.com
