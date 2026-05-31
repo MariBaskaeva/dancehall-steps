@@ -38,6 +38,12 @@ public class Bot extends TelegramLongPollingBot {
         try {
             execute(response.method());
         } catch (TelegramApiException e) {
+            String message = e.getMessage();
+
+            if (message != null && message.contains("message is not modified")) {
+                return;
+            }
+
             throw new RuntimeException("Telegram API error", e);
         }
     }

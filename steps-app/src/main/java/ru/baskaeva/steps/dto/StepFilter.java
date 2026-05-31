@@ -1,6 +1,7 @@
 package ru.baskaeva.steps.dto;
 
 import jakarta.persistence.criteria.JoinType;
+import jakarta.persistence.criteria.Predicate;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -10,21 +11,22 @@ import ru.baskaeva.steps.model.Step;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.Set;
 
 @Data
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
 public class StepFilter {
-    private String name;
+    private List<String> names;
     private Type type;
-    private Era era;
-    private String author;
+    private Set<Era> era;
+    private Set<String> author;
     private List<String> tagNames;
 
     public Specification<Step> toSpecification() {
         return Specification.allOf(
-                nameSpec(),
+                namesSpec(),
                 typeSpec(),
                 eraSpec(),
                 authorSpec(),
@@ -32,9 +34,17 @@ public class StepFilter {
         );
     }
 
-    private Specification<Step> nameSpec() {
-        return (root, query, cb) -> Optional.ofNullable(name)
-                .map(n -> cb.like(cb.lower(root.get("name")), "%" + n.toLowerCase() + "%"))
+    private Specification<Step> namesSpec() {
+        return (root, query, cb) -> Optional.ofNullable(names)
+                .filter(n -> !n.isEmpty())
+                .map(n -> cb.or(
+                        n.stream()
+                                .map(name -> cb.like(
+                                        cb.lower(root.get("name")),
+                                        "%" + name.toLowerCase() + "%"
+                                ))
+                                .toArray(Predicate[]::new)
+                ))
                 .orElseGet(cb::conjunction);
     }
 
@@ -46,13 +56,15 @@ public class StepFilter {
 
     private Specification<Step> authorSpec() {
         return (root, query, cb) -> Optional.ofNullable(author)
-                .map(a -> cb.like(cb.lower(root.get("author")), "%" + a.toLowerCase() + "%"))
+                .filter(a -> !a.isEmpty())
+                .map(e -> root.get("author").get("name").in(e))
                 .orElseGet(cb::conjunction);
     }
 
     private Specification<Step> eraSpec() {
         return (root, query, cb) -> Optional.ofNullable(era)
-                .map(e -> cb.equal(root.get("era"), e))
+                .filter(e -> !e.isEmpty())
+                .map(e -> root.get("era").in(e))
                 .orElseGet(cb::conjunction);
     }
 

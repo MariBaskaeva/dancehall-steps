@@ -1,9 +1,23 @@
-{{header}} {{value}}
+Авторы выбраны:
+{{#filter.author}}
+    - {{.}}
+{{/filter.author}}
+{{^filter.author}}
+    - любые
+{{/filter.author}}
+
+Эры выбраны:
+{{#filter.era}}
+    - {{.}}
+{{/filter.era}}
+{{^filter.era}}
+    - любые
+{{/filter.era}}
+
 {{#steps}}
 
 Название: {{{name}}}
 Тип: {{type}}
-Автор: {{author}}
+Автор: {{author.name}}
 Эра: {{era}}
-Теги: {{#tags}}#{{name}} {{/tags}}
 {{/steps}}
