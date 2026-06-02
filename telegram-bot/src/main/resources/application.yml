@@ -13,11 +13,14 @@ spring:
     enabled: true
   data:
     redis:
-      host: localhost
-      port: 6379
+      host: ${REDIS_HOST}
+      port: ${REDIS_PORT}
 bot:
   token: ${BOT_TOKEN}
   name: ${BOT_NAME}
   greeting: classpath:static/start
 server:
-  port: 9081
+  port: ${APP_PORT}
+logging:
+  level:
+    root: ERROR

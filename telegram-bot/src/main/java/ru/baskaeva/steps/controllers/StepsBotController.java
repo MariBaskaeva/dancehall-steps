@@ -57,7 +57,7 @@ public class StepsBotController {
     public BotResponse start(BotRequest req) {
         String greeting;
         try {
-            greeting = botProperties.getGreeting().getContentAsString(StandardCharsets.UTF_8);
+            greeting = botProperties.greeting().getContentAsString(StandardCharsets.UTF_8);
         } catch (IOException e) {
             greeting = "Привет!";
         }

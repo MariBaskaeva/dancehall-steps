@@ -1,30 +1,34 @@
 package ru.baskaeva.steps.bot;
 
-import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
+import org.telegram.telegrambots.bots.DefaultBotOptions;
 import org.telegram.telegrambots.bots.TelegramLongPollingBot;
 import org.telegram.telegrambots.meta.api.objects.Update;
 import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
-import ru.baskaeva.steps.routing.BotRequest;
 import ru.baskaeva.steps.properties.BotProperties;
+import ru.baskaeva.steps.routing.BotRequest;
 import ru.baskaeva.steps.routing.BotResponse;
 import ru.baskaeva.steps.routing.Dispatcher;
 
 @Component
-@RequiredArgsConstructor
 public class Bot extends TelegramLongPollingBot {
-
     private final BotProperties botProperties;
     private final Dispatcher dispatcher;
 
+    public Bot(BotProperties botProperties, Dispatcher dispatcher, DefaultBotOptions botOptions) {
+        super(botOptions);
+        this.botProperties = botProperties;
+        this.dispatcher = dispatcher;
+    }
+
     @Override
     public String getBotUsername() {
-        return botProperties.getName();
+        return botProperties.name();
     }
 
     @Override
     public String getBotToken() {
-        return botProperties.getToken();
+        return botProperties.token();
     }
 
     @Override
