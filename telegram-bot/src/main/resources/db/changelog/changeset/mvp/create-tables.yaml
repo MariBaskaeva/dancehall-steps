@@ -9,7 +9,7 @@ databaseChangeLog:
               - column:
                   name: id
                   type: BIGINT
-                  autoIncrement: true
+                  autoIncrement: false
                   constraints:
                     primaryKey: true
                     nullable: false
@@ -24,7 +24,7 @@ databaseChangeLog:
               - column:
                   name: id
                   type: BIGINT
-                  autoIncrement: true
+                  autoIncrement: false
                   constraints:
                     primaryKey: true
                     nullable: false

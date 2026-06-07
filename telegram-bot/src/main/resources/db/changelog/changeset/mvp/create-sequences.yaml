@@ -19,3 +19,13 @@ databaseChangeLog:
                 incrementBy: "1"
                 minValue: "1"
                 maxValue: "9999999"
+    - changeSet:
+        id: create-sequence-author
+        author: Mari
+        changes:
+            createSequence:
+                sequenceName: "author_sequence"
+                startValue: "1"
+                incrementBy: "1"
+                minValue: "1"
+                maxValue: "9999999"

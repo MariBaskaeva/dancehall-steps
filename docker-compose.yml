@@ -1,28 +1,62 @@
-version: '3.8'
-
 services:
   app:
     build: .
+    restart: unless-stopped
     depends_on:
-      - db
+      db:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
     ports:
-    - "8080:8080"
+      - "8080:8080"
     environment:
-        DB_URL: ${DB_URL}
-        DB_USERNAME: ${DB_USERNAME}
-        DB_PASSWORD: ${DB_PASSWORD}
-        BOT_TOKEN: ${BOT_TOKEN}
+      DB_URL: ${DB_URL}
+      DB_USERNAME: ${DB_USERNAME}
+      DB_PASSWORD: ${DB_PASSWORD}
+      BOT_TOKEN: ${BOT_TOKEN}
+      BOT_NAME: ${BOT_NAME}
+      APP_PORT: ${APP_PORT}
+      REDIS_HOST: ${REDIS_HOST}
+      REDIS_PORT: ${REDIS_PORT}
+      BOT_PROXY_TYPE: ${BOT_PROXY_TYPE}
+      BOT_PROXY_HOST: ${BOT_PROXY_HOST}
+      BOT_PROXY_PORT: ${BOT_PROXY_PORT}
+      BOT_PROXY_USERNAME: ${BOT_PROXY_USERNAME}
+      BOT_PROXY_PASSWORD: ${BOT_PROXY_PASSWORD}
+
   db:
-    image: postgres:16-alpine
-    restart: always
+    image: docker.io/library/postgres:16-alpine
+    restart: unless-stopped
     environment:
       POSTGRES_DB: ${DB_NAME}
       POSTGRES_USER: ${DB_USERNAME}
       POSTGRES_PASSWORD: ${DB_PASSWORD}
     ports:
-      - "15432:5432"
+      - "127.0.0.1:15432:5432"
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U \"$${POSTGRES_USER}\" -d \"$${POSTGRES_DB}\""]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 10s
     volumes:
       - db_data:/var/lib/postgresql/data
 
+  redis:
+    image: docker.io/library/redis:7.4-alpine
+    restart: unless-stopped
+    ports:
+      - "127.0.0.1:6379:6379"
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 5s
+    volumes:
+      - redis_data:/data
+
 volumes:
   db_data:
+  redis_data:
+    driver: local

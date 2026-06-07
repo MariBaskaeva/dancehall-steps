@@ -6,6 +6,12 @@ databaseChangeLog:
         file: create-tables.yaml
         relativeToChangelogFile: true
     - include:
+        file: migrate-author-to-entity.yaml
+        relativeToChangelogFile: true
+    - include:
+        file: insert-authors.sql
+        relativeToChangelogFile: true
+    - include:
         file: insert-steps.sql
         relativeToChangelogFile: true
     - include:

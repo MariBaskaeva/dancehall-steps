@@ -10,6 +10,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToMany;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.SequenceGenerator;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -38,7 +39,8 @@ public class Step {
     private String name;
     @Enumerated(EnumType.STRING)
     private Type type;
-    private String author;
+    @ManyToOne
+    private Author author;
     @Enumerated(EnumType.STRING)
     private Era era;
     @ManyToMany(fetch = FetchType.EAGER)

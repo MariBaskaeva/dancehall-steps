@@ -1,11 +1,12 @@
 package ru.baskaeva.steps.properties;
 
-import lombok.Data;
+import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.core.io.Resource;
 
-@Data
-public class BotProperties {
-    private String token;
-    private String name;
-    private Resource greeting;
+@ConfigurationProperties("bot")
+public record BotProperties(
+        String token,
+        String name,
+        Resource greeting,
+        ProxyProperties proxy) {
 }

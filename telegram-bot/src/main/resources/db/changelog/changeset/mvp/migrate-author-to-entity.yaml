@@ -1,0 +1,68 @@
+databaseChangeLog:
+  - changeSet:
+      id: create-author-table
+      author: Mari
+      changes:
+        - createTable:
+            tableName: author
+            columns:
+              - column:
+                  name: id
+                  type: BIGINT
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: name
+                  type: VARCHAR(255)
+                  constraints:
+                    nullable: false
+        - addUniqueConstraint:
+            tableName: author
+            columnNames: name
+            constraintName: uk_author_name
+  - changeSet:
+      id: add-author-id-to-step
+      author: Mari
+      changes:
+        - addColumn:
+            tableName: step
+            columns:
+              - column:
+                  name: author_id
+                  type: BIGINT
+  - changeSet:
+      id: migrate-authors-data
+      author: Mari
+      changes:
+        - sql:
+            sql: |
+              INSERT INTO author (id, name)
+              SELECT nextval('author_sequence'), s.author
+              FROM (
+                  SELECT DISTINCT author
+                  FROM step
+                  WHERE author IS NOT NULL
+              ) s;
+
+              UPDATE step st
+              SET author_id = a.id
+              FROM author a
+              WHERE st.author = a.name;
+  - changeSet:
+      id: add-step-author-fk
+      author: Mari
+      changes:
+        - addForeignKeyConstraint:
+            baseTableName: step
+            baseColumnNames: author_id
+            referencedTableName: author
+            referencedColumnNames: id
+            constraintName: fk_step_author
+  - changeSet:
+      id: drop-old-author-column
+      author: Mari
+      changes:
+        - dropColumn:
+            tableName: step
+            columnName: author
