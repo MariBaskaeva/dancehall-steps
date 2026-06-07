@@ -20,7 +20,6 @@ jobs:
           cd ${{ secrets.PROJECT_FOLDER }}
           git checkout main
           git pull origin main
-          mvn clean package
           podman-compose down
-          podman-compose --env-file ../app/env.sh up --build -d
+          podman-compose up --build -d
           EOF
